@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sai Chintala | Data Center and DevOps</title>
+<meta name="description" content="Data center deployment technician: rack and stack, copper and fiber cabling, FRU replacement. Cincinnati, OH.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF1F5; --panel:#FFFFFF; --ink:#13203A; --muted:#55627A; --line:#D3DBE6;
+  --blue:#2457D6; --fiber:#F0B429; --ok:#1E9E6A;
+  --rack:#1B2740; --rack2:#26345A;
+  --head:'Bricolage Grotesque','Segoe UI',Arial,sans-serif;
+  --body:'IBM Plex Sans','Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body)}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--fiber);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.nav{position:sticky;top:0;z-index:5;background:rgba(237,241,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.nav b{font:700 18px var(--head)}
+.nav nav{display:flex;gap:22px}
+.nav nav a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:500}
+.nav nav a:hover{color:var(--blue)}
+
+/* hero */
+.hero{padding:64px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.who{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.photo{width:76px;height:76px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 26px var(--head);overflow:hidden;flex:none;border:3px solid var(--panel);box-shadow:0 0 0 2px var(--blue)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.where{color:var(--muted);font-size:15px}
+h1{font:700 clamp(38px,6vw,64px)/1.04 var(--head);letter-spacing:-.02em}
+.lead{margin:20px 0 28px;max-width:34em;color:var(--muted);font-size:18px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:500;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
+.btn.main{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.btn{transition:transform .15s}
+
+/* rack: the one memorable element */
+.rack{background:var(--rack);border-radius:14px;padding:14px;box-shadow:0 18px 40px rgba(19,32,58,.25);border:2px solid #0E1730}
+.rack-top{display:flex;justify-content:space-between;color:#8FA0C4;font-size:13px;padding:2px 6px 10px}
+.unit{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--rack2);border:1px solid #3A4A78;border-radius:6px;padding:12px 14px;margin-bottom:8px;color:#fff}
+.unit:last-child{margin-bottom:0}
+.leds{display:flex;gap:5px}
+.led{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 6px var(--ok);animation:blink 2.4s infinite}
+.led:nth-child(2){background:var(--fiber);box-shadow:0 0 6px var(--fiber);animation-delay:.8s}
+.led:nth-child(3){animation-delay:1.5s}
+@keyframes blink{0%,86%,100%{opacity:1}92%{opacity:.25}}
+.unit span{font-size:14px;color:#C9D4EC}
+.unit strong{font:700 22px var(--head)}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font:700 clamp(28px,4vw,38px)/1.1 var(--head);letter-spacing:-.01em;margin-bottom:12px}
+.sub{color:var(--muted);max-width:40em;margin-bottom:36px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:6px;padding:22px}
+.card:nth-child(even){border-left-color:var(--fiber)}
+.card h3{font:700 19px var(--head);margin-bottom:8px}
+.card p{color:var(--muted);font-size:16px}
+
+/* experience timeline */
+.job{display:grid;grid-template-columns:170px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--line)}
+.job:last-of-type{border:0}
+.when{color:var(--muted);font-size:15px}
+.job h3{font:700 22px var(--head)}
+.org{color:var(--blue);font-weight:500;margin-bottom:12px}
+.job ul{padding-left:20px}
+.job li{margin-bottom:8px}
+.job li b{font-weight:500;color:var(--ink)}
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.edu .card{border-left-color:var(--ink)}
+
+/* contact */
+.contact{background:var(--ink);color:#fff;border-top:0}
+.contact h2{color:#fff}
+.contact p{color:#B9C5DE;margin-bottom:24px;max-width:36em}
+.contact .btn{border-color:#fff;color:#fff}
+.contact .btn.main{background:var(--fiber);border-color:var(--fiber);color:var(--ink)}
+footer{padding:22px 0;text-align:center;color:var(--muted);font-size:14px}
+
+@media(max-width:820px){
+  .hero .wrap{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:6px}
+  .nav nav{gap:14px}
+  .nav nav a:nth-child(n+4){display:none}
+}
+@media(prefers-reduced-motion:reduce){.led{animation:none}.btn{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <b>Sai Chintala</b>
+  <nav aria-label="Main">
+    <a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <div>
+    <div class="who">
+      <!-- Put your photo in the repo as photo.jpg. Until then, the initials show. -->
+      <div class="photo"><img src="photo.jpg" alt="Sai Chintala" onerror="this.remove();this.parentNode.textContent='SC'"></div>
+      <div class="where">Cincinnati, OH<br>Open to relocation</div>
+    </div>
+    <h1>Sai Chintala</h1>
+    <p class="lead">Data center and DevOps engineer. I rack servers, run and fix copper and fiber cabling, replace failed parts, and automate deployments with CI/CD, containers, cloud and Infrastructure as Code.</p>
+    <div class="btns">
+      <a class="btn main" href="resume.pdf" download>Download resume</a>
+      <a class="btn" href="https://linkedin.com/in/sai-chintala-71b587396" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:Saimaheshch12@gmail.com">Email me</a>
+    </div>
+  </div>
+
+  <div class="rack" role="img" aria-label="Weekly output: 2 to 5 L11 racks, 50 plus FRU replacements, 40 plus tickets closed">
+    <div class="rack-top"><span>Weekly output</span><span>Jabil, Florence KY</span></div>
+    <div class="unit"><div class="leds"><i class="led"></i><i class="led"></i><i class="led"></i></div><span>L11 racks tested</span><strong>2–5</strong></div>
+    <div class="unit"><div class="leds"><i class="led"></i><i class="led"></i><i class="led"></i></div><span>FRU replacements</span><strong>50+</strong></div>
+    <div class="unit"><div class="leds"><i class="led"></i><i class="led"></i><i class="led"></i></div><span>Tickets closed</span><strong>40+</strong></div>
+    <div class="unit"><div class="leds"><i class="led"></i><i class="led"></i><i class="led"></i></div><span>Passing retest rate</span><strong>99%</strong></div>
+  </div>
+</div></div>
+
+<section id="skills"><div class="wrap">
+  <h2>What I work with</h2>
+  <p class="sub">Data center hardware, plus the DevOps tools used to build, ship and monitor software.</p>
+  <div class="cards">
+    <div class="card"><h3>Install and cabling</h3><p>Rack and stack, copper and fiber cabling, rack PDUs, top-of-rack switch and VLAN verification, engineering drawings.</p></div>
+    <div class="card"><h3>Repair and testing</h3><p>FRU replacement (DIMM, drive, PSU, NIC), cable and link debugging, network testing, root cause analysis, RAID, PCIe.</p></div>
+    <div class="card"><h3>Provisioning</h3><p>BIOS/UEFI, firmware, OS install, Dell iDRAC, HPE iLO, IPMI.</p></div>
+    <div class="card"><h3>Records and systems</h3><p>Inventory and RMA, ServiceNow, Linux (Ubuntu, CentOS), Bash, Python.</p></div>
+    <div class="card"><h3>Cloud and CI/CD</h3><p>AWS (EC2, S3, VPC, RDS, EKS), Jenkins, Git, GitHub.</p></div>
+    <div class="card"><h3>Containers and IaC</h3><p>Docker, Kubernetes, Terraform, Ansible.</p></div>
+    <div class="card"><h3>Monitoring and networking</h3><p>Prometheus, Grafana, TCP/IP, DNS, HTTP/HTTPS, load balancing.</p></div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="job">
+    <div class="when">Jun 2026 – Present<br>Florence, KY</div>
+    <div>
+      <h3>Diagnostics Technician</h3>
+      <div class="org">Jabil, enterprise server manufacturing</div>
+      <ul>
+        <li><b>2–5 fully tested L11 racks per week</b> for data center deployment, racking servers from engineering drawings and connecting copper and fiber cabling for network and power.</li>
+        <li><b>50+ FRU replacements per week at a 99% passing retest rate</b>, isolating and replacing faulty DIMMs, drives, PSUs and NICs.</li>
+        <li><b>Every rack verified before handoff</b>: copper and fiber links tested, and top-of-rack switch, PDU, VLAN and management connections confirmed.</li>
+        <li><b>40+ tickets closed per week at 85% first-touch resolution</b>, with root cause analysis on PCIe, RAID and firmware faults using Dell iDRAC, HPE iLO and IPMI.</li>
+        <li><b>98% inventory accuracy across 500+ spares</b>, tracking replacement parts and RMAs.</li>
+        <li><b>Network drops isolated</b> with packet-trace and path analysis using traceroute, ping and tcpdump.</li>
+        <li><b>Python and Bash scripts</b> that automate network diagnostics and verify server connection states.</li>
+        <li><b>30% fewer escalations at 98% SLA adherence</b>, logging every diagnostic and test result in ServiceNow and providing manuals with each rack.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="job">
+    <div class="when">Sep 2022 – Oct 2023<br>Hyderabad, India</div>
+    <div>
+      <h3>Jr. DevOps Engineer</h3>
+      <div class="org">AGA IT Solutions Pvt Ltd</div>
+      <ul>
+        <li><b>15+ major incidents root-caused with the team and 20% fewer failed releases</b>, troubleshooting Linux, AWS, Docker and Kubernetes environments.</li>
+        <li>Designed, built and maintained <b>Jenkins CI/CD pipelines</b> to automate application build, testing and deployment.</li>
+        <li>Managed containerized applications with <b>Docker</b> and orchestrated deployments on <b>Kubernetes</b> clusters.</li>
+        <li>Supported cloud infrastructure and application deployments on <b>AWS</b>.</li>
+        <li>Provisioned resources with <b>Terraform</b> (Infrastructure as Code) and handled configuration management and deployments with <b>Ansible</b>.</li>
+        <li>Automated routine system administration and maintenance with <b>Bash and Python</b>.</li>
+        <li>Set up monitoring and alerting with <b>Prometheus and Grafana</b>, keeping systems reliable and available.</li>
+        <li>Worked with developers to troubleshoot deployment issues, improve release processes, and join code reviews and deployment planning.</li>
+        <li>Wrote technical documentation, deployment procedures and operational runbooks, following security, scalability and performance standards.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education</h2>
+  <div class="edu" style="margin-top:28px">
+    <div class="card"><h3>M.S. in Information Technology</h3><p>Elmhurst University, Illinois<br>Jan 2024 – Dec 2025</p></div>
+    <div class="card"><h3>B.Tech. in Electronics and Communication Engineering</h3><p>Bhimavaram Institute of Engineering and Technology, India<br>2022</p></div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p>I'm open to data center deployment, hardware diagnostics and infrastructure roles, including relocation.</p>
+  <div class="btns">
+    <a class="btn main" href="mailto:Saimaheshch12@gmail.com">Saimaheshch12@gmail.com</a>
+    <a class="btn" href="https://linkedin.com/in/sai-chintala-71b587396" target="_blank" rel="noopener">LinkedIn profile</a>
+    <a class="btn" href="resume.pdf" download>Download resume</a>
+  </div>
+</div></section>
+</main>
+
+<footer>© 2026 Sai Chintala</footer>
+</body>
+</html>
